@@ -124,7 +124,7 @@ const Song: React.FC<{ song: Video }> = ({ song }) => {
 
   return (
     <motion.div
-      className="w-full h-[9rem] flex items-center gap-4 rounded-md"
+      className="w-full h-[9rem] max-sm:h-[10rem] flex items-center gap-4 rounded-md"
       initial={{ opacity: 0, y: 20 }}
       animate={{ y: 0 }}
       whileInView={{ opacity: 1 }}
@@ -134,12 +134,12 @@ const Song: React.FC<{ song: Video }> = ({ song }) => {
         initial={{ scale: 0 }}
         animate={{ scale: 1 }}
         transition={{ duration: 0.5 }}
-        className="h-full max-md:w-2/5 w-1/5 relative"
+        className="h-full flex items-center justify-center max-sm:w-[35%] w-[20%] relative"
       >
         <Image
           width={200}
           height={200}
-          className="rounded-lg object-cover w-full"
+          className="rounded-lg object-contain w-full"
           alt={song.title}
           src={song.thumbnail}
         />
@@ -163,7 +163,7 @@ const Song: React.FC<{ song: Video }> = ({ song }) => {
           )}
         </motion.div>
       </motion.div>
-      <div className="max-md:w-3/5 w-4/5 space-y-2 py-2">
+      <div className="max-sm:w-[65%] w-4/5 space-y-2 py-2">
         <motion.p
           className="text-sm max-md:text-xs max-md:line-clamp-1"
           initial={{ opacity: 0, x: 300 }}

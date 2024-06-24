@@ -20,7 +20,7 @@ export function PlaceholdersAndVanishInput({
     const startAnimation = () => {
       interval = setInterval(() => {
         setCurrentPlaceholder((prev) => (prev + 1) % placeholders.length);
-      }, 1500);
+      }, 3500);
     };
     startAnimation();
     return () => clearInterval(interval);
