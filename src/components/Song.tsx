@@ -142,6 +142,7 @@ const Song: React.FC<{ song: Video }> = ({ song }) => {
           className="rounded-lg object-contain w-full"
           alt={song.title}
           src={song.thumbnail}
+          unoptimized
         />
         <motion.div
           initial={{ scaleZ: 0 }}
