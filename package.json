@@ -6,10 +6,10 @@
     "dev": "next dev --hostname 0.0.0.0",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "postinstall": "patch-package"
+    "lint": "next lint"
   },
   "dependencies": {
+    "@distube/ytdl-core": "^4.14.4",
     "@ffmpeg/ffmpeg": "^0.12.10",
     "@ffmpeg/types": "^0.12.2",
     "@ffmpeg/util": "^0.12.1",
@@ -29,8 +29,7 @@
     "react-dom": "^18",
     "tailwind-merge": "^2.3.0",
     "tailwindcss-animate": "^1.0.7",
-    "youtube-search-scraper": "^1.0.1",
-    "ytdl-core": "^4.11.5"
+    "youtube-search-scraper": "^1.0.1"
   },
   "devDependencies": {
     "@types/node": "^20",
