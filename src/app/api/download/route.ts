@@ -3,7 +3,7 @@ import ytdl from '@distube/ytdl-core'
 
 export async function GET(req: NextRequest) {
   try {
-    const { searchParams } = new URL(req.url); // Ensure a base URL is provided
+    const { searchParams } = new URL(req.url);
     const id = searchParams.get('id');
 
     if (!id) {
@@ -12,20 +12,17 @@ export async function GET(req: NextRequest) {
 
     const videoUrl = `https://www.youtube.com/watch?v=${id}`;
 
-    // Start fetching video info and initializing the stream in parallel
     const infoPromise = ytdl.getInfo(videoUrl);
     const streamPromise = ytdl(videoUrl, {
       quality: 'highestaudio',
       filter: 'audioonly'
     });
 
-    // Await both promises
     const [info, stream] = await Promise.all([infoPromise, streamPromise]);
     if (!info) {
       return NextResponse.json({ error: `Failed to fetch video info for ID: ${id}` }, { status: 500 });
     }
 
-    // Sanitize title for filename
     const sanitizedTitle = info.videoDetails.title.replace(/[^\w\s]/gi, ''); // Remove non-word characters
 
     const estimatedSize = parseInt(info.formats.find((format) => format.audioBitrate === 160)?.contentLength || '0', 10);
