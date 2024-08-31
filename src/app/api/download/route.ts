@@ -12,13 +12,12 @@ export async function GET(req: NextRequest) {
 
     const videoUrl = `https://www.youtube.com/watch?v=${id}`;
 
-    const infoPromise = ytdl.getInfo(videoUrl);
-    const streamPromise = ytdl(videoUrl, {
+    const info = await ytdl.getInfo(videoUrl);
+    const stream = ytdl(videoUrl, { 
       quality: 'highestaudio',
       filter: 'audioonly'
     });
 
-    const [info, stream] = await Promise.all([infoPromise, streamPromise]);
     if (!info) {
       return NextResponse.json({ error: `Failed to fetch video info for ID: ${id}` }, { status: 500 });
     }
@@ -47,7 +46,6 @@ export async function GET(req: NextRequest) {
         });
       }
     });
-
     return new NextResponse(readableStream, { headers });
 
   } catch (error) {
