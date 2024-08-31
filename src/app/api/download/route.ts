@@ -50,6 +50,9 @@ export async function GET(req: NextRequest) {
 
   } catch (error) {
     console.error('Error streaming audio:', error);
+    if (error instanceof Error) {
+      return new NextResponse('Error Streaming Audio. Please check your code', {status : 500,statusText : error.message}, )
+    }
     return new NextResponse('Error streaming audio. Please try again later.', { status: 500 });
   }
 }
