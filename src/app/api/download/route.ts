@@ -9,7 +9,7 @@ export async function GET(req: NextRequest) {
     if (!id) {
       return NextResponse.json({ error: 'Missing required parameter: id' }, { status: 400 });
     }
-
+    
     const videoUrl = `https://www.youtube.com/watch?v=${id}`;
 
     const info = await ytdl.getInfo(videoUrl);
